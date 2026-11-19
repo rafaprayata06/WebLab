@@ -1,3 +1,125 @@
 
 @import "tailwindcss";
-@plugin "daisyui";
+
+/* ========================================
+   DAISYUI - WEBLAB THEME
+======================================== */
+
+@plugin "daisyui" {
+  themes: weblab --default;
+}
+
+@plugin "daisyui/theme" {
+  name: "weblab";
+  default: true;
+  color-scheme: light;
+
+  /* Base colors */
+  --color-base-100: #F8FAFC;
+  --color-base-200: #F1F5F9;
+  --color-base-300: #E2E8F0;
+  --color-base-content: #172554;
+
+  /* Primary */
+  --color-primary: #172554;
+  --color-primary-content: #FFFFFF;
+
+  /* Secondary */
+  --color-secondary: #0F766E;
+  --color-secondary-content: #FFFFFF;
+
+  /* Neutral */
+  --color-neutral: #172554;
+  --color-neutral-content: #FFFFFF;
+
+  /* Status */
+  --color-success: #0F766E;
+  --color-error: #DC2626;
+}
+
+/* ========================================
+   WEBLAB AUTH RESPONSIVE
+   Penyesuaian khusus desktop pendek
+======================================== */
+
+@media (min-width: 1024px) and (max-height: 720px) {
+
+  .auth-branding {
+    padding-top: 16px;
+    padding-bottom: 12px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .auth-branding-logo {
+    margin-bottom: 16px;
+  }
+
+  .auth-branding-heading {
+    margin-bottom: 16px;
+  }
+
+  .auth-branding-title {
+    margin-top: 12px;
+    font-size: 1.8rem;
+    line-height: 1.15;
+  }
+
+  .auth-branding-description {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    line-height: 1.45;
+  }
+
+  .auth-code-editor > div:first-child {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .auth-code-lines {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 0.75rem;
+    line-height: 1.25;
+  }
+
+  .auth-branding-features {
+    padding-top: 8px;
+    padding-bottom: 4px;
+  }
+}
+
+/* ========================================
+   WEBLAB AUTH RESPONSIVE
+   Layar desktop sangat pendek
+======================================== */
+
+@media (min-width: 1024px) and (max-height: 600px) {
+
+  .auth-branding {
+    padding-top: 10px;
+    padding-bottom: 8px;
+  }
+
+  .auth-branding-logo {
+    margin-bottom: 10px;
+  }
+
+  .auth-branding-heading {
+    margin-bottom: 10px;
+  }
+
+  .auth-branding-title {
+    font-size: 1.55rem;
+  }
+
+  .auth-branding-description {
+    margin-top: 7px;
+    font-size: 0.8rem;
+  }
+
+  .auth-code-lines {
+    font-size: 0.7rem;
+    line-height: 1.15;
+  }
+}

@@ -49,10 +49,7 @@ export const authMiddleware = (req, res, next) => {
       });
     }
 
-    if (
-      error.name === 'JsonWebTokenError' ||
-      error.name === 'NotBeforeError'
-    ) {
+    if (error.name === 'JsonWebTokenError' ||error.name === 'NotBeforeError') {
       return res.status(401).json({ 
         success: false,
         message: 'Token tidak valid.',

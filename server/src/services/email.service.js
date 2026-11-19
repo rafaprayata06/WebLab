@@ -6,12 +6,8 @@ dotenv.config();
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export const sendVerificationEmail = async ({
-  to,
-  name,
-  token,
-}) => {
-  const verificationUrl =`${process.env.API_URL}/api/auth/verify-email?token=${encodeURIComponent(token)}`;
+export const sendVerificationEmail = async ({to,name,token,}) => {
+  const verificationUrl =`${process.env.APP_URL}/verify-email?token=${encodeURIComponent(token)}`;
 
   const { data, error } = await resend.emails.send({
     from: 'WebLab <onboarding@resend.dev>',

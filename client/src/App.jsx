@@ -1,35 +1,27 @@
-import { useEffect, useState } from 'react';
+
+import { Routes, Route, Navigate } from 'react-router-dom';
+
+import Login from './features/auth/pages/Login.jsx';
+import Register from './features/auth/pages/Register.jsx';
+import VerifyEmail from './features/auth/pages/VerifyEmail.jsx';
+import Dashboard from './pages/Dashboard.jsx';
+import ProtectedRoute from './features/auth/components/ProtectedRoute.jsx';
 
 function App() {
-  const [message, setMessage] = useState('Menghubungkan ke server...');
-
-  useEffect(() => {
-    async function fetchHealth() {
-      try {
-        const response = await fetch('http://localhost:5000/api/health');
-
-        if (!response.ok) {
-          throw new Error('Gagal mengambil data dari server');
-        }
-
-        const data = await response.json();
-        setMessage(data.message);
-      } catch (error) {
-        console.error('Error:', error);
-        setMessage('Backend tidak dapat dihubungi.');
-      }
-    }
-
-    fetchHealth();
-  }, []);
-
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="card bg-base-200 shadow-xl p-8">
-        <h1 className="text-2xl font-bold">WebLab</h1>
-        <p className="mt-3">{message}</p>
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Navigate to="/login" replace />} />
+
+      {/* Public Routes */}
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/verify-email" element={<VerifyEmail />} />
+
+      {/* Protected Routes */}
+      <Route element={<ProtectedRoute />}>
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Route>
+    </Routes>
   );
 }
 
