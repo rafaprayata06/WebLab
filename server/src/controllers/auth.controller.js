@@ -312,12 +312,13 @@ export const login = async (req, res) => {
     const normalizedEmail = email.trim().toLowerCase();
 
     // 4. Mencari pengguna berdasarkan email
-    const result = await pool.query(
-      `SELECT id, name, email, password_hash, is_verified
-       FROM users
-       WHERE email = $1`,
-      [normalizedEmail]
-    );
+   const result = await pool.query(
+  `SELECT id, name, email, password_hash, is_verified,
+          onboarding_completed
+   FROM users
+   WHERE email = $1`,
+  [normalizedEmail]
+);
 
     // 5. Memeriksa apakah pengguna ditemukan
     if (result.rows.length === 0) {
@@ -366,12 +367,13 @@ export const login = async (req, res) => {
       success: true,
       message: 'Login berhasil.',
       accessToken,
-      user: {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        is_verified: user.is_verified,
-      },
+     user: {
+  id: user.id,
+  name: user.name,
+  email: user.email,
+  is_verified: user.is_verified,
+  onboarding_completed: user.onboarding_completed,
+},
     });
 
   } catch (error) {
@@ -392,11 +394,12 @@ export const getMe = async (req, res) => {
 
     // 2. Mencari data pengguna berdasarkan ID
     const result = await pool.query(
-      `SELECT id, name, email, is_verified, created_at
-       FROM users
-       WHERE id = $1`,
-      [userId]
-    );
+  `SELECT id, name, email, is_verified, created_at,
+          onboarding_completed
+   FROM users
+   WHERE id = $1`,
+  [userId]
+);
 
     // 3. Memastikan pengguna masih tersedia di database
     if (result.rows.length === 0) {
@@ -416,6 +419,7 @@ export const getMe = async (req, res) => {
         id: user.id,
         name: user.name,
         email: user.email,
+        onboarding_completed: user.onboarding_completed,
         is_verified: user.is_verified,
         created_at: user.created_at,
       },

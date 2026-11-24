@@ -3,13 +3,14 @@ import CodeEditorPreview from './CodeEditorPreview.jsx';
 
 function AuthBranding() {
   return (
-    <section className="auth-branding flex min-h-screen flex-col justify-between bg-[#172554] px-8 py-7 text-white md:px-10 xl:px-14">
+    <section className="auth-branding flex h-full min-h-dvh flex-col justify-between bg-[#172554] px-6 py-5 text-white sm:px-8 md:px-10 xl:px-14">
 
-      <div className="auth-branding-content my-auto">
+      {/* Konten utama */}
+      <div className="auth-branding-content my-auto w-full">
 
         {/* Logo */}
-        <div className="auth-branding-logo mb-8 flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/15">
+        <div className="auth-branding-logo mb-6 flex items-center gap-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/15">
             <span className="text-xl font-bold">&lt;/&gt;</span>
           </div>
 
@@ -19,24 +20,24 @@ function AuthBranding() {
         </div>
 
         {/* Headline */}
-        <div className="auth-branding-heading mb-7">
+        <div className="auth-branding-heading mb-5">
 
           <span className="inline-flex rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#172554]">
             DARI NOL, JADI BISA
           </span>
 
-          <h1 className="auth-branding-title mt-5 max-w-xl text-3xl leading-tight font-bold tracking-tight xl:text-4xl">
+          <h1 className="auth-branding-title mt-4 max-w-xl text-2xl leading-tight font-bold tracking-tight xl:text-4xl">
             Belajar Pemrograman Web Secara Interaktif, Langkah demi Langkah
           </h1>
 
-          <p className="auth-branding-description mt-4 max-w-lg text-sm leading-relaxed text-blue-100 xl:text-base">
+          <p className="auth-branding-description mt-3 max-w-lg text-sm leading-relaxed text-blue-100 xl:text-base">
             Baca konsepnya, coba kodenya, pahami hasilnya.
             Semua dalam satu tempat yang ramah untuk pemula.
           </p>
         </div>
 
         {/* Code editor */}
-        <div className="mx-auto max-w-xl">
+        <div className="mx-auto w-full max-w-xl">
           <CodeEditorPreview />
 
           {/* Notification */}
@@ -51,7 +52,7 @@ function AuthBranding() {
       </div>
 
       {/* Feature information */}
-      <div className="auth-branding-features flex flex-wrap gap-x-7 gap-y-3 py-3 text-xs text-blue-100">
+      <div className="auth-branding-features flex shrink-0 flex-wrap gap-x-7 gap-y-2 py-3 text-xs text-blue-100">
         <span>✓ 6 modul terstruktur</span>
         <span>✓ Latihan interaktif</span>
       </div>

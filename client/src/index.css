@@ -38,88 +38,93 @@
 }
 
 /* ========================================
-   WEBLAB AUTH RESPONSIVE
-   Penyesuaian khusus desktop pendek
+   WEBLAB AUTH - GLOBAL BASE
 ======================================== */
 
-@media (min-width: 1024px) and (max-height: 720px) {
+html {
+  min-height: 100%;
+}
 
+body {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+  background-color: #F8FAFC;
+  color: #172554;
+}
+
+/* ========================================
+   WEBLAB AUTH - DESKTOP RESPONSIVE
+======================================== */
+
+/* Desktop dan laptop dengan tinggi terbatas */
+@media (min-width: 1024px) and (max-height: 800px) {
   .auth-branding {
-    padding-top: 16px;
-    padding-bottom: 12px;
-    padding-left: 32px;
-    padding-right: 32px;
+    min-height: 0;
   }
 
   .auth-branding-logo {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 
   .auth-branding-heading {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 
   .auth-branding-title {
-    margin-top: 12px;
-    font-size: 1.8rem;
+    font-size: 1.65rem;
     line-height: 1.15;
   }
 
   .auth-branding-description {
-    margin-top: 10px;
-    font-size: 0.85rem;
-    line-height: 1.45;
-  }
-
-  .auth-code-editor > div:first-child {
-    padding-top: 8px;
-    padding-bottom: 8px;
-  }
-
-  .auth-code-lines {
-    padding-top: 8px;
-    padding-bottom: 8px;
-    font-size: 0.75rem;
-    line-height: 1.25;
+    margin-top: 8px;
+    font-size: 0.82rem;
+    line-height: 1.4;
   }
 
   .auth-branding-features {
-    padding-top: 8px;
+    padding-top: 6px;
     padding-bottom: 4px;
   }
 }
 
-/* ========================================
-   WEBLAB AUTH RESPONSIVE
-   Layar desktop sangat pendek
-======================================== */
-
-@media (min-width: 1024px) and (max-height: 600px) {
-
+/* Laptop dengan tinggi layar sangat pendek */
+@media (min-width: 1024px) and (max-height: 680px) {
   .auth-branding {
-    padding-top: 10px;
+    padding-top: 8px;
     padding-bottom: 8px;
   }
 
   .auth-branding-logo {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .auth-branding-heading {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .auth-branding-title {
-    font-size: 1.55rem;
+    font-size: 1.45rem;
   }
 
   .auth-branding-description {
-    margin-top: 7px;
-    font-size: 0.8rem;
+    margin-top: 6px;
+    font-size: 0.75rem;
   }
 
   .auth-code-lines {
-    font-size: 0.7rem;
-    line-height: 1.15;
+    font-size: 0.68rem;
+    line-height: 1.1;
+  }
+}
+
+/* ========================================
+   WEBLAB AUTH - MOBILE
+======================================== */
+
+@media (max-width: 1023px) {
+  html,
+  body {
+    min-height: 100%;
   }
 }

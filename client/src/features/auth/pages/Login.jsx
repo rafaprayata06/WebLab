@@ -1,11 +1,17 @@
 
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
 import AuthLayout from '../components/AuthLayout';
-import { loginUser } from '../authService';
+import { login } from '../authSlice';
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { loginStatus } = useSelector((state) => state.auth);
+  const isLoading = loginStatus === 'loading';
 
   const [formData, setFormData] = useState({
     email: '',
@@ -15,7 +21,6 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [serverError, setServerError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -61,25 +66,18 @@ function Login() {
     if (!validateForm()) return;
 
     try {
-      setIsLoading(true);
+      await dispatch(
+        login({
+          email: formData.email.trim(),
+          password: formData.password,
+        })
+      ).unwrap();
 
-      const data = await loginUser({
-        email: formData.email.trim(),
-        password: formData.password,
-      });
-
-      // Simpan token dan data pengguna
-      localStorage.setItem('accessToken', data.accessToken);
-      localStorage.setItem('user', JSON.stringify(data.user));
-
-      // Arahkan pengguna ke Dashboard
       navigate('/dashboard', { replace: true });
     } catch (error) {
       setServerError(
-        error.message || 'Terjadi kesalahan. Silakan coba kembali.'
+        error || 'Terjadi kesalahan. Silakan coba kembali.'
       );
-    } finally {
-      setIsLoading(false);
     }
   };
 
